@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Calc.View.CalcU"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calc.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="225" Background="#FFE4DCDC">
+    <Grid Background="#FF4E9B4E" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical" Margin="0">
+            <StackPanel  Orientation="Horizontal" >
+                <Button Content="MC"/>
+                <Button Content="MR"/>
+                <Button Content="MS"/>
+                <Button Content="M+"/>
+                <Button Content="M-"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" >
+                <Button Content="b"/>
+                <Button Content="CE"/>
+                <Button Content="C"/>
+                <Button Content="+-"/>
+                <Button Content="K"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" >
+                <Button Content="7"/>
+                <Button Content="8"/>
+                <Button Content="9"/>
+                <Button Content="/"/>
+                <Button Content="%"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" >
+                <Button Content="4"/>
+                <Button Content="5"/>
+                <Button Content="6"/>
+                <Button Content="*"/>
+                <Button Content="1/x"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" >
+                <StackPanel Orientation="Vertical">
+                <StackPanel  Orientation="Horizontal" >
+                    <Button Content="1"/>
+                    <Button Content="2"/>
+                    <Button Content="3"/>
+                    <Button Content="-"/>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" >
+                    <Button Content="0"/>
+                    <Button Content=","/>
+                    <Button Content="+"/>
+                    <Button Content="-"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="="/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
