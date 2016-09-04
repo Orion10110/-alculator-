@@ -6,6 +6,13 @@
              xmlns:local="clr-namespace:Calc.View"
              mc:Ignorable="d" 
              d:DesignHeight="320" d:DesignWidth="225" Background="#FFE4DCDC">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid Background="#FF4E9B4E" Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
