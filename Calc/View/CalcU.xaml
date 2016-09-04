@@ -8,17 +8,22 @@
              d:DesignHeight="320" d:DesignWidth="225" Background="#FFE4DCDC">
     <UserControl.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles.xaml"/>
+
+                <ResourceDictionary Source="Style.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
     </UserControl.Resources>
+
     <Grid Background="#FF4E9B4E" Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical" Margin="0">
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical" Margin="28,0,27,10">
             <StackPanel  Orientation="Horizontal" >
                 <Button Content="MC"/>
                 <Button Content="MR"/>
@@ -27,44 +32,46 @@
                 <Button Content="M-"/>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" >
-                <Button Content="b"/>
-                <Button Content="CE"/>
-                <Button Content="C"/>
-                <Button Content="+-"/>
+                <Button Content="&#x2190;" FontSize="14.667" FontWeight="Bold" Click="Button_Click_5"  />
+                <Button Content="CE" Click="Button_Click_3"/>
+                <Button Content="C" Click="Button_Click_4"/>
+                <Button Content="+-" Click="Button_Click_6"/>
                 <Button Content="K"/>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" >
-                <Button Content="7"/>
-                <Button Content="8"/>
-                <Button Content="9"/>
-                <Button Content="/"/>
-                <Button Content="%"/>
+                <Button Content="7" Click="Button_Click"/>
+                <Button Content="8" Click="Button_Click"/>
+                <Button Content="9" Click="Button_Click"/>
+                <Button Content="/" Click="Button_Click_1"/>
+                <Button Content="%" Click="Button_Click_1"/>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" >
-                <Button Content="4"/>
-                <Button Content="5"/>
-                <Button Content="6"/>
-                <Button Content="*"/>
-                <Button Content="1/x"/>
+                <Button Content="4" Click="Button_Click"/>
+                <Button Content="5" Click="Button_Click"/>
+                <Button Content="6" Click="Button_Click"/>
+                <Button Content="*" Click="Button_Click_1" />
+                <Button Content="1/x" Click="Button_Click_1"/>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" >
                 <StackPanel Orientation="Vertical">
-                <StackPanel  Orientation="Horizontal" >
-                    <Button Content="1"/>
-                    <Button Content="2"/>
-                    <Button Content="3"/>
-                    <Button Content="-"/>
-                </StackPanel>
-                <StackPanel  Orientation="Horizontal" >
-                    <Button Content="0"/>
-                    <Button Content=","/>
-                    <Button Content="+"/>
-                    <Button Content="-"/>
+                    <StackPanel  Orientation="Horizontal" >
+                        <Button Content="1" Click="Button_Click"/>
+                        <Button Content="2" Click="Button_Click"/>
+                        <Button Content="3" Click="Button_Click"/>
+                        <Button Content="-" Click="Button_Click_1"/>
+                    </StackPanel>
+                    <StackPanel  Orientation="Horizontal" >
+                        <Button Content="0" Width="55" Click="Button_Click"/>
+                        <Button Content="," Click="Button_Click"/>
+                        <Button Content="+" Click="Button_Click_1"/>
                     </StackPanel>
                 </StackPanel>
-                <Button Content="="/>
+                <Button Content="=" Height="75" Click="Button_Click_2"/>
             </StackPanel>
         </StackPanel>
-
+        <StackPanel x:Name="Dat" Orientation="Horizontal">
+            <Label x:Name="label" Content="{Binding Stroka}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="40" Width="100" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+            <Label x:Name="label1" Content="{Binding Operat}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.28,3.093" Width="93" Height="40"/>
+        </StackPanel>
     </Grid>
 </UserControl>

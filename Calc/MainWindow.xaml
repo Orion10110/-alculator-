@@ -1,4 +1,4 @@
-﻿<Window x:Class="Calc.MainWindow"
+﻿<Window xmlns:View="clr-namespace:Calc.View"  x:Class="Calc.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Калькулятор" Height="320" Width="225">
     <Grid>
-        
+        <View:CalcU />
+
     </Grid>
 </Window>
