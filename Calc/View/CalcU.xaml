@@ -20,10 +20,9 @@
 
     <Grid Background="#FF4E9B4E" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
+            <RowDefinition Height="320"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,65,10">
             <StackPanel x:Name="Dat" Orientation="Vertical">
                 <TextBox  IsHitTestVisible="False" IsReadOnly="True" x:Name="label1" Text="{Binding HistLine}" HorizontalAlignment="Right"  VerticalAlignment="Top"   Height="25" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalContentAlignment="Right" SelectionBrush="{x:Null}" Width="150"/>
                 <Label x:Name="label" Content="{Binding Line}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Width="150"/>
@@ -66,14 +65,14 @@
                         <Button Content="-" Click="Button_Click_1"/>
                     </StackPanel>
                     <StackPanel  Orientation="Horizontal" >
-                        <Button Content="0" Width="55" Click="Button_Click"/>
+                        <Button Content="0" Width="50" Click="Button_Click"/>
                         <Button Content="," Click="Button_Click"/>
                         <Button Content="+" Click="Button_Click_1"/>
                     </StackPanel>
                 </StackPanel>
-                <Button Content="=" Height="75" Click="Button_Click_2"/>
+                <Button Content="=" Height="70" Click="Button_Click_2"/>
             </StackPanel>
         </StackPanel>
-        
+
     </Grid>
 </UserControl>
