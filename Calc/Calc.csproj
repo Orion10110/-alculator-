@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CalcModel.cs" />
     <Compile Include="View\CalcU.xaml.cs">
       <DependentUpon>CalcU.xaml</DependentUpon>
     </Compile>

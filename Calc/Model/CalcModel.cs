@@ -4,69 +4,52 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Calc.View
+namespace Calc.Model
 {
-    /// <summary>
-    /// Логика взаимодействия для CalcU.xaml
-    /// </summary>
-    public partial class CalcU : UserControl,INotifyPropertyChanged
+    public class CalcModel:INotifyPropertyChanged
     {
-        public CalcU()
-        {
-            InitializeComponent();
-            Dat.DataContext = this;
-        }
-
+        private bool valueFir = true;
+        private bool sch;
         private string val1 = "0";
         private string val2 = "0";
-        private string line="0";
+       
 
         private string histLine;
-
-
         public string HistLine
         {
             get { return histLine; }
-            set { histLine = value;
+            set
+            {
+                histLine = value;
                 OnPropertyChanged("HistLine");
             }
         }
 
+        private string line = "0";
         public string Line
         {
             get { return line; }
-            set { line = value;
+            set
+            {
+                line = value;
                 OnPropertyChanged("Line");
             }
         }
 
         private string operat;
-        private bool valueFir = true;
-        private bool sch;
-
         public string Operat
         {
             get { return operat; }
-            set { operat = value;
+            set
+            {
+                operat = value;
                 OnPropertyChanged("Operat");
             }
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void InputValue(string v)
         {
-            Button buttonClick = (Button)sender;
-            string v = buttonClick.Content.ToString();
             if (valueFir)
             {
                 Line = "0";
@@ -76,7 +59,7 @@ namespace Calc.View
             {
                 return;
             }
-           
+
             if (line == "0" && v != ",")
             {
                 Line = v;
@@ -94,28 +77,22 @@ namespace Calc.View
                 val2 = line;
                 sch = true;
             }
+        } 
 
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public void Action(string v)
         {
-            Button buttonClick = (Button)sender;
-            string v = buttonClick.Content.ToString();
-
-            
             val2 = Line;
             if (sch)
             {
                 Calculate();
                 sch = false;
             }
-            
-            
+
+
             Operat = v;
             if (!valueFir && !sch)
             {
-                HistLine += val2 + " " + operat+" ";
+                HistLine += val2 + " " + operat + " ";
 
             }
             else
@@ -139,21 +116,13 @@ namespace Calc.View
                 default:
                     break;
             }
-           
+
             Line = res.ToString();
             val1 = Line;
 
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler propertyChanged = PropertyChanged;
-            if (propertyChanged != null)
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        public void Decide()
         {
             Calculate();
             sch = false;
@@ -162,12 +131,26 @@ namespace Calc.View
             HistLine = "";
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void ChangedLineValue(string newLine)
+        {
+            if (String.IsNullOrEmpty(operat))
+            {
+                Line = val1 = newLine;
+            }
+            else {
+                Line = val2 = newLine;
+            }
+        }
+
+
+
+        public void ClearE()
         {
             ChangedLineValue("0");
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+
+        public void Clear()
         {
             sch = false;
             valueFir = true;
@@ -176,14 +159,13 @@ namespace Calc.View
             val1 = "0";
             val2 = "0";
             HistLine = "";
-
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        public void Back()
         {
-            
-            if (Line.Length > 1) {
-                string temp = Line.Substring(0, Line.Length-1);
+            if (Line.Length > 1)
+            {
+                string temp = Line.Substring(0, Line.Length - 1);
                 ChangedLineValue(temp);
             }
             else
@@ -192,7 +174,7 @@ namespace Calc.View
             }
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        public void ChangeSign()
         {
             if (Line[0] != '-')
             {
@@ -206,43 +188,35 @@ namespace Calc.View
             }
             else
             {
-                string temp = Line.Substring(1, Line.Length-1);
+                string temp = Line.Substring(1, Line.Length - 1);
                 ChangedLineValue(temp);
             }
-           
         }
 
-        private void Button_Click_7(object sender, RoutedEventArgs e)
-        {
 
-            Button buttonClick = (Button)sender;
-            string v = buttonClick.Content.ToString();
-            double res= Double.Parse(Line);
+        public void FOperat(string v)
+        {
+            double res = Double.Parse(Line);
 
             switch (v)
             {
-                case "1/x":res = 1 / res; break;
-                case "%": res = Double.Parse(val1)/100*Double.Parse(val2); break;
+                case "1/x": res = 1 / res; break;
+                case "%": res = Double.Parse(val1) / 100 * Double.Parse(val2); break;
                 case "√": res = Math.Sqrt(res); break;
                 default:
                     break;
             }
-           
+
             ChangedLineValue(res.ToString());
             valueFir = true;
         }
-
-        
-
-        private void ChangedLineValue(string newLine)
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
         {
-            if (String.IsNullOrEmpty(operat))
-            {
-                Line = val1 = newLine;
-            }
-            else {
-                Line = val2 = newLine;
-            }
+            PropertyChangedEventHandler propertyChanged = PropertyChanged;
+            if (propertyChanged != null)
+                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }
