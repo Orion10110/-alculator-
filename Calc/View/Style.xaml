@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Calc.View">
+    
+    
     <Style TargetType="Button">
         <!--<Setter Property="FontFamily" Value="Verdana" />-->
         <Style.Setters>
@@ -19,15 +21,15 @@
                             <Rectangle x:Name="outerRectangle" 
         HorizontalAlignment="Stretch" 
         VerticalAlignment="Stretch" 
-        Stroke="{TemplateBinding Background}" 
+       
       
-        Fill="Transparent" />
+        Fill="Gray" />
 
                             <!-- Inner Rectangle-->
                             <Rectangle x:Name="innerRectangle" 
         HorizontalAlignment="Stretch" 
         VerticalAlignment="Stretch" Stroke="Transparent" 
-        StrokeThickness="5" 
+        StrokeThickness="1" 
         Fill="{TemplateBinding Background}" 
          />
 
@@ -45,10 +47,9 @@
                            
                                 <!-- Change the color of the outer rectangle when user 
          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle"
-      Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <Setter Property ="Rectangle.Stroke" TargetName="innerRectangle"
-      Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                
+                                <Setter Property ="Fill" TargetName="innerRectangle"
+      Value="#131C36" />
 
 
                                 <!-- Makes the text slightly blurry as though you 

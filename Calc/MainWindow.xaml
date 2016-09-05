@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calc"
         mc:Ignorable="d"
-        Title="Калькулятор" Height="365.714" Width="253.872">
+        Title="Калькулятор" MinHeight="355.494" MinWidth="213.747" Height="355.494" Width="213.747">
     <Grid>
-        <View:CalcU HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <View:CalcU   />
 
     </Grid>
 </Window>

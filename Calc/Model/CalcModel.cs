@@ -10,9 +10,10 @@ namespace Calc.Model
     public class CalcModel:INotifyPropertyChanged
     {
         private bool valueFir = true;
-        private bool sch;
+        private bool sch=false;
         private string val1 = "0";
         private string val2 = "0";
+        private bool firstorcalc = true;
        
 
         private string histLine;
@@ -90,10 +91,10 @@ namespace Calc.Model
 
 
             Operat = v;
-            if (!valueFir && !sch)
+            if ((!valueFir && !sch) || firstorcalc)
             {
                 HistLine += val2 + " " + operat + " ";
-
+                firstorcalc = false;
             }
             else
             {
@@ -119,6 +120,7 @@ namespace Calc.Model
 
             Line = res.ToString();
             val1 = Line;
+            firstorcalc = true;
 
         }
 
