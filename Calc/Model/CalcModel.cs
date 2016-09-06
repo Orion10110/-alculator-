@@ -20,7 +20,7 @@ namespace Calc.Model
         public string HistLine
         {
             get { return histLine; }
-            set
+           set
             {
                 histLine = value;
                 OnPropertyChanged("HistLine");
@@ -31,7 +31,7 @@ namespace Calc.Model
         public string Line
         {
             get { return line; }
-            set
+           set
             {
                 line = value;
                 OnPropertyChanged("Line");
@@ -42,13 +42,53 @@ namespace Calc.Model
         public string Operat
         {
             get { return operat; }
-            set
+           set
             {
                 operat = value;
                 OnPropertyChanged("Operat");
             }
         }
 
+
+        private string memoryDate="0";
+
+        public string MemoryDate
+        {
+            get { return memoryDate; }
+           private set { memoryDate = value;
+                OnPropertyChanged("MemoryDate");
+            }
+        }
+
+
+
+        public void MemorySave()
+        {
+
+            MemoryDate = Line;
+        }
+
+        public void MemoryClear()
+        {
+            MemoryDate = "0";
+        }
+
+        public void MemoryRead()
+        {
+            Line = MemoryDate;
+        }
+
+        public void MemoryPlus()
+        {
+            double res =Double.Parse(MemoryDate) + Double.Parse(Line);
+            MemoryDate = res.ToString();
+        }
+
+        public void MemorySub()
+        {
+            double res = Double.Parse(MemoryDate) - Double.Parse(Line);
+            MemoryDate = res.ToString();
+        }
         public void InputValue(string v)
         {
             if (valueFir)
@@ -161,6 +201,7 @@ namespace Calc.Model
             val1 = "0";
             val2 = "0";
             HistLine = "";
+            firstorcalc = true;
         }
 
         public void Back()

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:con="clr-namespace:Calc.Model"
              xmlns:local="clr-namespace:Calc.View"
-             mc:Ignorable="d" Background="#FFE4DCDC" BorderBrush="Gray" BorderThickness="1" >
+             mc:Ignorable="d" Background="#FFE4DCDC" BorderBrush="Gray" BorderThickness="1" KeyUp="userControl_KeyUp">
     <UserControl.Resources>
         <ResourceDictionary>
 
@@ -14,13 +14,14 @@
                 <ResourceDictionary Source="Style.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
-            
-            <con:SizeContentConverter x:Key="SizeConvert"></con:SizeContentConverter>
+            <JournalEntryListConverter x:Key="JournalEntryListConverter"/>
 
+            <con:SizeContentConverter x:Key="SizeConvert"></con:SizeContentConverter>
+            <con:MemoryVisibleConverter x:Key="MemoryConverter"></con:MemoryVisibleConverter>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Background="Black"  x:Name="Dat" >
+    <Grid Background="Black"  x:Name="Dat" KeyUp="Dat_KeyUp">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -40,13 +41,14 @@
         </Grid.RowDefinitions>
 
         <TextBox IsHitTestVisible="False" Grid.Row="0" IsReadOnly="True" x:Name="HistBox" Text="{Binding HistLine}" HorizontalAlignment="Right"  VerticalAlignment="Top"    Background="{x:Null}" BorderBrush="{x:Null}" HorizontalContentAlignment="Right" SelectionBrush="{x:Null}" Foreground="White" Grid.ColumnSpan="5" Width="{Binding ActualWidth, ElementName=Dat}" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label  Grid.Row="1" Content="M" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding MemoryDate, Converter={StaticResource MemoryConverter}}" />
         <TextBox IsHitTestVisible="False" Grid.Row="1" IsReadOnly="True" x:Name="LineBox" Text="{Binding Line}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Width="{Binding ActualWidth, ElementName=Dat}" Grid.ColumnSpan="5" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
-        <Button Content="MC" Height="Auto" Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        <Button Content="MR" Grid.Column="1" Height="Auto" Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        <Button Content="MS" Grid.Column="2" Height="Auto"  Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        <Button Content="M+" Grid.Column="3" Height="Auto" Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        <Button Content="M-" Grid.Column="4" Height="Auto"  Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Content="MC" Height="Auto" Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Click="Button_Click_8" />
+        <Button Content="MR" Grid.Column="1" Height="Auto" Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Click="Button_Click_9" />
+        <Button Content="MS" Grid.Column="2" Height="Auto"  Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Click="Button_Click_10" />
+        <Button Content="M+" Grid.Column="3" Height="Auto" Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Click="Button_Click_11" />
+        <Button Content="M-" Grid.Column="4" Height="Auto"  Grid.Row="2" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Click="Button_Click_12" />
         <Button Content="←"  FontWeight="Bold" Click="Button_Click_5"  Height="Auto" Grid.Row="3" Width="Auto"  FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="CE" Click="Button_Click_3" Grid.Column="1" Height="Auto" Grid.Row="3"  Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="C"  Click="Button_Click_4" Grid.Column="2" Height="Auto"  Grid.Row="3" Width="Auto" FontSize="{Binding FontSize, ElementName=button1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />

@@ -26,6 +26,8 @@ namespace Calc.View
         {
             InitializeComponent();
             Dat.DataContext = this.cal;
+            Dat.Focus();
+            
         }
 
 
@@ -95,8 +97,79 @@ namespace Calc.View
             cal.FOperat(v);
         }
 
-        
+        private void Dat_KeyUp(object sender, KeyEventArgs e)
+        {
+           
+            //var s = e.Key;
+            //if(e.Key == Key.)
+            
+            //MessageBox.Show(conver.ConvertToString(e.Key));
+        }
 
-      
+        private void userControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            KeyConverter conver = new KeyConverter();
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9 && !(e.KeyboardDevice.Modifiers == ModifierKeys.Shift)) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                cal.InputValue((conver.ConvertToString(e.Key)));
+            }
+            if(e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
+            {
+                switch (e.Key)
+                {
+                    case Key.D8:cal.Action("*"); break;
+                    case Key.OemPlus:cal.Action("+");break;
+                    case Key.D5:cal.FOperat("%"); break;
+                    default: break;
+                }
+            }
+            else if (e.Key == Key.OemPlus)
+            {
+                cal.Decide();
+            }
+            switch (conver.ConvertToString(e.Key))
+            {
+
+                case "Divide": cal.Action("/"); break;
+                case "Multiply": cal.Action("*"); break;
+                case "Add": cal.Action("+"); break;
+                case "OemMinus":
+                case "Subtract": cal.Action("-"); break;
+                case "Return":cal.Decide(); break;
+                case "Backspace": cal.Back(); break;
+
+
+                //case "OemPlus":
+                //case "OemMinus":
+
+                default: 
+                    break;
+            }
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            cal.MemoryClear();
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            cal.MemoryRead();
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            cal.MemorySave();
+        }
+
+        private void Button_Click_11(object sender, RoutedEventArgs e)
+        {
+            cal.MemoryPlus();
+        }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            cal.MemorySub();
+        }
     }
 }

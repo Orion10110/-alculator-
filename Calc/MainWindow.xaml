@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Калькулятор" MinHeight="355.494" MinWidth="213.747" Height="355.494" Width="213.747">
     <Grid>
-        <View:CalcU   />
+        <View:CalcU x:Name="Calculat" Focusable="True"/>
 
     </Grid>
 </Window>

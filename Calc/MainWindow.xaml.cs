@@ -23,6 +23,7 @@ namespace Calc
         public MainWindow()
         {
             InitializeComponent();
+            Calculat.Focus();
         }
     }
 }
